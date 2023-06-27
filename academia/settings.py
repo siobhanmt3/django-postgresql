@@ -75,10 +75,15 @@ WSGI_APPLICATION = 'academia.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+#Conexión creada con postgresql local:5432
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "academia",
+        "USER": "academia",
+        "PASSWORD": "academia",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 
