@@ -62,3 +62,31 @@ def login(request):
             {"message": "Method not allowed"},
             status = 405,
         )
+
+def delete(request, id: int):
+    if request.method == "DELETE":
+        try:
+            User.objects.get(pk=id).delete()
+            return JsonResponse(
+                {
+                    "message": "No content"
+                },
+                status=204,
+            )
+
+        except User.DoesNotExist:
+            return JsonResponse(
+                {"message": "User not found"},
+                status=404,
+            )
+    
+        except Exception:
+            return JsonResponse(
+                {"message": "Internal Server Error"},
+                status = 500,
+            )
+    else:
+        return JsonResponse(
+            {"message": "Method not allowed"},
+            status = 405,
+        )
